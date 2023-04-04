@@ -1,14 +1,19 @@
 class Obstacle {
-  constructor(image) {
-    this.image = image;
+  constructor(obstacleConfig) {
+    this.image = obstacleConfig.imageSource;
     this.x = canvasWidth;
     this.y = random(canvasHeight - 200, canvasHeight - 250);
     this.width = 100;
     this.height = 100;
-    this.velocity = 2;
+    this.velocity = 5;
+    this.points = obstacleConfig.points;
+    this.rotation = obstacleConfig.totation;
   }
 
   draw() {
+    if (game.status !== "playing") {
+      return;
+    }
     this.x -= this.velocity;
     image(this.image, this.x, this.y, this.width, this.height);
   }
@@ -26,8 +31,18 @@ class Obstacle {
     if (dist(playerX, playerY, obstacleX, obstacleY) > 50) {
       return false;
     } else {
-      playerInfo.score += 100;
-      document.querySelector("span").innerText = playerInfo.score;
+      if (this.points > 0) {
+        playerInfo.score += this.points;
+      } else {
+        playerInfo.lifes += this.points;
+      }
+      document.getElementById("score").innerText = playerInfo.score;
+
+      if (playerInfo.lifes >= 0) {
+        document.getElementById("lifes").innerText = Array(playerInfo.lifes)
+          .fill("❤️")
+          .join("");
+      }
       return true;
     }
   }

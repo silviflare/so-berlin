@@ -16,9 +16,25 @@
     <title>Berlin Skate</title>
   </head>
   <body>
-    <!-- <h1>Berlin Skate</h1> -->
+    <nav>
+      <h1>SKATE BERLIN</h1>
+    </nav>
 
-    <!-- <p>Score: <span>0</span></p> -->
+    <div id="start-screen">
+      <button class="start-button">START GAME</button>
+    </div>
+
+    <div id="play-screen">
+      <div id="scoreboard">
+        <h1>SCORE: <span id="score">0</span></h1>
+        <h1>LIFES LEFT: <span id="lifes">❤️❤️❤️</span></h1>
+      </div>
+    </div>
+
+    <div id="gameover-screen" class="hide">
+      <h2 id="gameover">GAME OVER</h2>
+      <button class="replay-button">REPLAY</button>
+    </div>
 
     <script src="./js/obstacle.js"></script>
     <script src="./js/background.js"></script>

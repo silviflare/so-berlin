@@ -2,14 +2,19 @@ class Player {
   constructor() {
     this.width = 145;
     this.height = 115;
-    this.x = 250;
+    this.x = window.innerWidth / 3;
     this.y = 200 - this.height;
-    this.velocity = 0;
-    this.gravity = 0.2;
+    this.velocity = 15;
+    this.gravity = 0.8;
     this.score = 0;
+    this.lifes = 3;
   }
 
   draw() {
+    if (game.status !== "playing") {
+      return;
+    }
+
     this.velocity += this.gravity;
     this.y += this.velocity;
 
@@ -21,8 +26,8 @@ class Player {
   }
 
   jump() {
-    if (this.y > 200) {
-      this.velocity = -10;
+    if (this.y > 600) {
+      this.velocity = -20;
     }
   }
 }
