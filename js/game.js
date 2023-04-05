@@ -6,9 +6,9 @@ class Game {
     this.playerImage;
     this.obstacles = [];
     this.obstacleImages;
-    this.nextObstacleFrame = 140;
-    this.status = "start"; // start, playing, gameOver
-    //this.speedUp = 1;
+    this.nextObstacleFrame = 100;
+    this.status = "start";
+    this.speedUp = 1;
   }
 
   preload() {
@@ -22,21 +22,21 @@ class Game {
 
     this.playerImage = loadImage("./assets/player/skater_normal.svg");
 
-    /*     const obstacle01 = loadImage("./assets/obstacles/obstacle_01.webp");
-    const obstacle02 = loadImage("./assets/obstacles/obstacle_02.webp");
-    const obstacle03 = loadImage("./assets/obstacles/obstacle_03.webp");
-    this.obstacleImages = [obstacle01, obstacle02, obstacle03]; */
+    // const obstacle01 = loadImage("./assets/obstacles/obstacle_01.webp");
+    // const obstacle02 = loadImage("./assets/obstacles/obstacle_02.webp");
+    // const obstacle03 = loadImage("./assets/obstacles/obstacle_03.webp");
+    // this.obstacleImages = [obstacle01, obstacle02, obstacle03];
 
     const obstacle01 = {
       imageSource: loadImage("./assets/obstacles/obstacle_01.webp"),
       points: 3,
-      rotation: 7,
+      rotation: 0,
     };
 
     const obstacle02 = {
       imageSource: loadImage("./assets/obstacles/obstacle_02.webp"),
       points: 2,
-      rotation: 7,
+      rotation: -7,
     };
 
     const obstacle03 = {
@@ -44,18 +44,42 @@ class Game {
       points: -1,
       rotation: 7,
     };
+
     this.obstacleImages = [obstacle01, obstacle02, obstacle03];
   }
 
-  // checkWinningCondition() {} ----------------
-
   startGame() {
-    this.status = "playing"; // Toogle classes!! + click
+    this.status = "playing";
+    this.speedUp = 1;
+    this.obstacles = [];
     this.nextObstacleFrame = frameCount + floor(random(80, 150));
+    this.player.reset();
+    this.updateScoreBoard();
+    const scoreOverlay = document.getElementById("scoreboard-overlay");
+    scoreOverlay.classList.remove("hide");
+    const startButton = document.getElementById("start-button");
+    startButton.classList.add("hide");
+    const gameOverScreen = document.getElementById("gameover-screen");
+    gameOverScreen.classList.add("hide");
   }
 
   gameOver() {
-    this.status = "gameOver"; // Toogle classes!! + lifes null anrufen
+    this.status = "gameOver";
+    const gameOverOverlay = document.getElementById("gameover-screen");
+    gameOverOverlay.classList.remove("hide");
+  }
+
+  updateScoreBoard() {
+    document.getElementById("score").innerText = this.player.score;
+
+    if (this.player.lifes > 0) {
+      document.getElementById("lifes").innerText = Array(this.player.lifes)
+        .fill("❤️")
+        .join("");
+    } else if (this.player.lifes <= 0) {
+      console.log("You lose!");
+      this.gameOver();
+    }
   }
 
   draw() {
@@ -63,17 +87,21 @@ class Game {
     this.background.draw();
     this.player.draw();
 
-    //Push a new obstacle into the array - push({obstacle})
+    //Push a new random obstacle (of the obstacle object array) into the new array
     let randomObstacle = floor(random(0, this.obstacleImages.length));
 
     if (frameCount === this.nextObstacleFrame) {
       this.obstacles.push(new Obstacle(this.obstacleImages[randomObstacle]));
-      this.nextObstacleFrame += floor(random(80, 150));
+      this.nextObstacleFrame += floor(random(50, 120));
+    }
+
+    if (frameCount % 200 === 0) {
+      this.speedUp += 0.1;
     }
 
     // Draw the obstacles
     this.obstacles.forEach((obstacle) => {
-      obstacle.draw();
+      obstacle.draw(this.speedUp);
     });
 
     this.obstacles = this.obstacles.filter((obstacle) => {
@@ -84,25 +112,16 @@ class Game {
       }
     });
 
-    // this.checkWinningCondition(); ----------------
+    this.updateScoreBoard();
   }
 }
 
-/* function loseScreen() {
-  noStroke();
-  fill('black');
-  square(0, 0, 800);
-}
+document.getElementById("start-button").addEventListener("click", function () {
+  // game.draw();
+  game.startGame();
+});
 
-function victoryScreen() {
-  noStroke();
-  fill('green');
-  square(0, 0, 800);
-} */
-
-/* 
-function setGameOver() {
-  gameOver = true;
-  document.getElementById("gameover-screen").style.visibility = "visible";
-  document.getElementById("gameover-screen").style.opacity = 1;
-} */
+document.getElementById("replay-button").addEventListener("click", function () {
+  // game.reset();
+  game.startGame();
+});

@@ -17,23 +17,26 @@
   </head>
   <body>
     <nav>
-      <h1>SKATE BERLIN</h1>
+      <h1>
+        SKATE <br />
+        BERLIN
+      </h1>
     </nav>
 
     <div id="start-screen">
-      <button class="start-button">START GAME</button>
+      <button id="start-button">START GAME</button>
     </div>
 
     <div id="play-screen">
-      <div id="scoreboard">
+      <div id="scoreboard-overlay" class="hide">
         <h1>SCORE: <span id="score">0</span></h1>
         <h1>LIFES LEFT: <span id="lifes">❤️❤️❤️</span></h1>
       </div>
     </div>
 
     <div id="gameover-screen" class="hide">
-      <h2 id="gameover">GAME OVER</h2>
-      <button class="replay-button">REPLAY</button>
+      <h2 id="gameover-overlay">GAME OVER</h2>
+      <button id="replay-button">REPLAY</button>
     </div>
 
     <script src="./js/obstacle.js"></script>

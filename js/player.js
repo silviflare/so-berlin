@@ -2,18 +2,15 @@ class Player {
   constructor() {
     this.width = 145;
     this.height = 115;
-    this.x = window.innerWidth / 3;
-    this.y = 200 - this.height;
-    this.velocity = 15;
-    this.gravity = 0.8;
-    this.score = 0;
-    this.lifes = 3;
+    this.reset();
   }
 
   draw() {
     if (game.status !== "playing") {
       return;
     }
+
+    // else if (game.status === "playing") {}
 
     this.velocity += this.gravity;
     this.y += this.velocity;
@@ -29,5 +26,14 @@ class Player {
     if (this.y > 600) {
       this.velocity = -20;
     }
+  }
+
+  reset() {
+    this.x = window.innerWidth / 3;
+    this.y = 200 - this.height;
+    this.velocity = 15;
+    this.gravity = 0.8;
+    this.score = 0;
+    this.lifes = 1;
   }
 }

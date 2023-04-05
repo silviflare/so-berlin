@@ -10,11 +10,11 @@ class Obstacle {
     this.rotation = obstacleConfig.totation;
   }
 
-  draw() {
+  draw(speedUp) {
     if (game.status !== "playing") {
       return;
     }
-    this.x -= this.velocity;
+    this.x -= this.velocity * speedUp;
     image(this.image, this.x, this.y, this.width, this.height);
   }
 
