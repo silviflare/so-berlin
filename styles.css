@@ -19,6 +19,7 @@ nav {
 
 #start-screen {
   position: absolute;
+  text-align: center;
 }
 
 #gameover-screen {
@@ -60,7 +61,7 @@ nav {
   letter-spacing: 2px;
   font-weight: 900;
   transition: background-color 1s;
-  margin: 100px auto;
+  margin: 40px auto;
   /* border: none; */
   border: 20px solid #000;
 }

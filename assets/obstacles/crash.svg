@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 57.77 58.13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Degradado_sin_nombre_16);
+      }
+    </style>
+    <radialGradient id="Degradado_sin_nombre_16" data-name="Degradado sin nombre 16" cx="28.89" cy="29.06" fx="28.89" fy="29.06" r="28.98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ce7940"/>
+      <stop offset=".15" stop-color="#d48a40"/>
+      <stop offset=".52" stop-color="#e2b040"/>
+      <stop offset=".81" stop-color="#eac740"/>
+      <stop offset="1" stop-color="#eed041"/>
+    </radialGradient>
+  </defs>
+  <g id="OBJECTS">
+    <path class="cls-1" d="m0,13.55s19.61,8.56,19.61,14.62-3.57,13.19-3.57,13.19c0,0,17.83-19.26,7.85,16.76,0,0,7.49-21.04,13.91-20.33,6.42.71,19.97,2.85,19.97,2.85,0,0-22.47-7.85-17.47-13.55,4.99-5.71,14.26-13.55,14.26-13.55,0,0-26.39,19.97-25.68-13.55,0,0-.01,17.05-5.71,18.19C17.83,19.26,0,13.55,0,13.55Z"/>
+  </g>
+</svg>

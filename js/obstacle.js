@@ -1,13 +1,12 @@
 class Obstacle {
   constructor(obstacleConfig) {
     this.image = obstacleConfig.imageSource;
+    this.points = obstacleConfig.points;
+    this.width = obstacleConfig.width;
+    this.height = obstacleConfig.height;
     this.x = canvasWidth;
     this.y = random(canvasHeight - 200, canvasHeight - 250);
-    this.width = 100;
-    this.height = 100;
     this.velocity = 5;
-    this.points = obstacleConfig.points;
-    this.rotation = obstacleConfig.totation;
   }
 
   draw(speedUp) {
@@ -28,12 +27,15 @@ class Obstacle {
     let playerY = playerInfo.y + playerInfo.height / 2;
 
     // dist(x1, y1, x2, y2) returns the distance between the objects
-    if (dist(playerX, playerY, obstacleX, obstacleY) > 50) {
+    if (dist(playerX, playerY, obstacleX, obstacleY) > 70) {
       return false;
     } else {
       if (this.points > 0) {
+        game.pointSound.play();
         playerInfo.score += this.points;
       } else {
+        game.crashSound.play();
+        image(game.crashImage, this.x, this.y, 200, 200);
         playerInfo.lifes += this.points;
       }
       document.getElementById("score").innerText = playerInfo.score;
