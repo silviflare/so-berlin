@@ -10,16 +10,28 @@ class Game {
     this.nextObstacleFrame = 100;
     this.status = "start";
     this.speedUp = 1;
+    this.obstacleUp = 1;
     this.pointSound;
     this.crashSound;
     this.crashImage;
+    this.pointImage;
     this.soundSkateboard;
   }
 
   preload() {
     this.backgroundImages = [
       {
-        src: loadImage("./assets/background/background_00.jpg"),
+        src: loadImage("./assets/background/background_01.png"),
+        x: 0,
+        speed: 1.5,
+      },
+      {
+        src: loadImage("./assets/background/background_03_clouds.png"),
+        x: 0,
+        speed: 2,
+      },
+      {
+        src: loadImage("./assets/background/background_02_city.png"),
         x: 0,
         speed: 3,
       },
@@ -28,6 +40,7 @@ class Game {
     this.playerImage = loadImage("./assets/player/skater_normal.svg");
     this.playerImageJump = loadImage("./assets/player/skater_jump.svg");
     this.crashImage = loadImage("./assets/obstacles/crash.svg");
+    this.pointImage = loadImage("./assets/obstacles/point.svg");
 
     const obstacle01 = {
       imageSource: loadImage("./assets/obstacles/obstacle_01.webp"),
@@ -106,11 +119,12 @@ class Game {
   startGame() {
     this.status = "playing";
     this.speedUp = 1;
+    this.obstacleUp = 1;
     this.obstacles = [];
     this.nextObstacleFrame = frameCount + floor(random(80, 150));
     this.player.reset();
     this.updateScoreBoard();
-    game.soundSkateboard.play();
+    game.soundSkateboard.loop();
     const scoreOverlay = document.getElementById("scoreboard-overlay");
     scoreOverlay.classList.remove("hide");
     const startButton = document.getElementById("start-screen");
@@ -121,6 +135,7 @@ class Game {
 
   gameOver() {
     this.status = "gameOver";
+    game.soundSkateboard.stop();
     const gameOverOverlay = document.getElementById("gameover-screen");
     gameOverOverlay.classList.remove("hide");
   }
@@ -148,21 +163,32 @@ class Game {
 
     if (frameCount === this.nextObstacleFrame) {
       this.obstacles.push(new Obstacle(this.obstacleImages[randomObstacle]));
-      this.nextObstacleFrame += floor(random(50, 120));
+      this.nextObstacleFrame += floor(random(50, 100) - this.obstacleUp);
     }
 
-    if (frameCount % 200 === 0) {
-      this.speedUp += 0.1;
+    if (frameCount % 200 === 0 && this.speedUp < 3) {
+      this.speedUp += 0.2;
     }
 
-    // Draw the obstacles
+    if (frameCount % 200 === 0 && this.obstacleUp < 45) {
+      this.obstacleUp += 2;
+    }
+
+    // console.log({ speedUp: this.speedUp, obstacleUp: this.obstacleUp });
+
+    // Draw obstacles
     this.obstacles.forEach((obstacle) => {
       obstacle.draw(this.speedUp);
     });
 
     this.obstacles = this.obstacles.filter((obstacle) => {
-      if (obstacle.collision(this.player) || obstacle.x < -obstacle.width) {
-        return false;
+      obstacle.collision(this.player);
+      if (
+        (obstacle.frameCrash > 0 && frameCount > obstacle.frameCrash + 5) ||
+        (obstacle.framePoints > 0 && frameCount > obstacle.framePoints + 20) ||
+        obstacle.x < -obstacle.width
+      ) {
+        return false; // delete later
       } else {
         return true;
       }
@@ -173,11 +199,9 @@ class Game {
 }
 
 document.getElementById("start-button").addEventListener("click", function () {
-  // game.draw();
   game.startGame();
 });
 
 document.getElementById("replay-button").addEventListener("click", function () {
-  // game.reset();
   game.startGame();
 });

@@ -1,7 +1,7 @@
 class Player {
   constructor() {
-    this.width = 145;
-    this.height = 115;
+    this.width = 155;
+    this.height = 125;
     this.reset();
   }
 
@@ -9,7 +9,6 @@ class Player {
     if (game.status !== "playing") {
       return;
     }
-    // else if (game.status === "playing") {}
 
     this.velocity += this.gravity;
     this.y += this.velocity;
@@ -25,7 +24,7 @@ class Player {
     } */
 
     if (this.velocity < 10) {
-      image(game.playerImageJump, this.x, this.y, 135, 135);
+      image(game.playerImageJump, this.x, this.y, 120, 140);
     } else {
       image(game.playerImage, this.x, this.y, this.width, this.height);
     }
@@ -36,14 +35,6 @@ class Player {
       this.velocity = -20;
     }
   }
-
-  /*   function keyPressed() {
-    if (jumping === false && keyCode === UP_ARROW) {
-        rectangle.vy -= 10;
-        jumping = true;
-        console.log(jumping); 
-    }
-  } */
 
   reset() {
     this.x = window.innerWidth / 3;
