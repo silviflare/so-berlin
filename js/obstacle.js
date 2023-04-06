@@ -32,7 +32,15 @@ class Obstacle {
     }
 
     if (this.framePoints > 0) {
-      image(game.pointImage, this.x, this.y - 100, 50, 50) * this.points;
+      image(game.pointImage, this.x, this.y - 100, 50, 50);
+
+      if (this.points >= 2) {
+        image(game.pointImage, this.x, this.y - 160, 50, 50);
+      }
+
+      if (this.points === 3) {
+        image(game.pointImage, this.x, this.y - 220, 50, 50);
+      }
       return;
     }
 

@@ -77,6 +77,13 @@ class Game {
       height: 100,
     };
 
+    const obstacle06 = {
+      imageSource: loadImage("./assets/obstacles/obstacle_06.png"),
+      points: 3,
+      width: 50,
+      height: 120,
+    };
+
     const obstacleLose01 = {
       imageSource: loadImage("./assets/obstacles/obstacle_lose_01.png"),
       points: -1,
@@ -97,6 +104,7 @@ class Game {
       obstacle03,
       obstacle04,
       obstacle05,
+      obstacle06,
       obstacleLose01,
       obstacleLose02,
     ];

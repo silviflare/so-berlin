@@ -36,6 +36,6 @@ class Player {
     this.velocity = 15;
     this.gravity = 0.8;
     this.score = 0;
-    this.lifes = 2;
+    this.lifes = 3;
   }
 }
