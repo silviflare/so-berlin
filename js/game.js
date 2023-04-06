@@ -155,6 +155,27 @@ class Game {
   gameOver() {
     this.status = "gameOver";
     game.soundSkateboard.stop();
+
+    let highscore = getItem("highscore") || 0;
+    console.log(highscore);
+    if (this.player.score > highscore) {
+      storeItem("highscore", this.player.score);
+      highscore = this.player.score;
+      const tryHarder = document.getElementById("try-harder");
+      tryHarder.classList.add("hide");
+      const highestScore = document.getElementById("highest-score");
+      highestScore.classList.remove("hide");
+    } else {
+      const highestScore = document.getElementById("highest-score");
+      highestScore.classList.add("hide");
+      const tryHarder = document.getElementById("try-harder");
+      tryHarder.classList.remove("hide");
+    }
+
+    document.getElementById("youHighscore").innerText = highscore;
+    document.getElementById("currentHighscore").innerText = highscore;
+    document.getElementById("youScore").innerText = this.player.score;
+
     document.getElementById("score").innerText = this.player.score;
     const gameOverOverlay = document.getElementById("gameover-screen");
     gameOverOverlay.classList.remove("hide");
@@ -162,6 +183,8 @@ class Game {
   }
 
   updateScoreBoard() {
+    if (this.status === "gameOver") return;
+
     document.getElementById("score").innerText = this.player.score;
 
     if (this.player.lifes > 0) {

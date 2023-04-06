@@ -31,7 +31,7 @@ class Player {
   }
 
   reset() {
-    this.x = window.innerWidth / 3;
+    this.x = window.innerWidth / 4;
     this.y = 200 - this.height;
     this.velocity = 15;
     this.gravity = 0.8;

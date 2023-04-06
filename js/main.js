@@ -22,6 +22,10 @@ function keyPressed() {
   }
 }
 
+function mouseClicked() {
+  game.player.jump();
+}
+
 function windowResized() {
   canvasWidth = windowWidth;
   canvasHeight = windowHeight;
