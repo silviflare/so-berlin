@@ -16,16 +16,14 @@
   </head>
   <body>
     <nav>
-      <h1>
-        SKATE <br />
-        BERLIN
-      </h1>
+      <img src="assets/logo/logo-rolling-berlin.svg" alt="logo" />
     </nav>
 
     <div id="start-screen">
       <h1>
-        Try to avoid poops 💩 and rollers 🛴 <br />through the streets of berlin
-        to avoid losing lives.
+        Accumulate objects while skating through the city of Berlin. <br />
+        Avoid the poops 💩 and the E-Scooters 🛴!
+        <br /><br />Use the space bar to jump.
       </h1>
       <button id="start-button">START GAME</button>
     </div>
@@ -34,15 +32,15 @@
       <div id="scoreboard-overlay" class="hide">
         <table class="styled-table">
           <tr>
-            <td><h1>SCORE</h1></td>
+            <td><h2>SCORE</h2></td>
             <td>
-              <h1>💰 <span id="score">0</span></h1>
+              <h2>💰 <span id="score">0</span></h2>
             </td>
           </tr>
           <tr>
-            <td><h1>LIFES LEFT</h1></td>
+            <td><h2>LIFES LEFT</h2></td>
             <td>
-              <h1><span id="lifes">❤️❤️❤️</span></h1>
+              <h2><span id="lifes">❤️❤️❤️</span></h2>
             </td>
           </tr>
         </table>
@@ -50,16 +48,7 @@
     </div>
 
     <div id="gameover-screen" class="hide">
-      <h2 id="gameover-overlay">☠️ GAME OVER ☠️</h2>
-      <!-- <div id="gameover-overlay" class="highest-score">
-        <h3>You got the highest score:<span class="score">0</span></h3>
-        <h3>Congratulations</h3>
-      </div>
-      <div id="gameover-overlay" class="try-harder" class="hide">
-        <h3>Your score is:<span class="score">0</span></h3>
-        <h3>The highest score was:<span>0</span></h3>
-        <h3>Try harder!</h3>
-      </div> -->
+      <h1 id="gameover-overlay">☠️ GAME OVER ☠️</h1>
       <button id="replay-button">REPLAY</button>
     </div>
 

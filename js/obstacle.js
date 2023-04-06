@@ -5,7 +5,7 @@ class Obstacle {
     this.width = obstacleConfig.width;
     this.height = obstacleConfig.height;
     this.x = canvasWidth;
-    this.y = canvasHeight - 200;
+    this.y = canvasHeight - 150;
     this.velocity = 5;
     this.frameCrash = 0;
     this.framePoints = 0;
@@ -15,7 +15,7 @@ class Obstacle {
   position() {
     if (this.points > 0) {
       const upOrDown = round(random(0, 1));
-      this.y = upOrDown === 0 ? canvasHeight - 400 : canvasHeight - 200;
+      this.y = upOrDown === 0 ? canvasHeight - 300 : canvasHeight - 150;
     }
   }
 
@@ -55,7 +55,7 @@ class Obstacle {
     let playerY = playerInfo.y + playerInfo.height / 2;
 
     if (
-      dist(playerX, playerY, obstacleX, obstacleY) > 70 ||
+      dist(playerX, playerY, obstacleX, obstacleY) > 60 ||
       this.framePoints > 0 ||
       this.frameCrash > 0
     ) {
@@ -73,10 +73,6 @@ class Obstacle {
       }
 
       document.getElementById("score").innerText = playerInfo.score;
-
-      // document.getElementsByClassName("score").innerHTML = playerInfo.score;
-      // let scoreAchived = playerInfo.score;
-      // document.getElementById("score").innerText = scoreAchived;
 
       if (playerInfo.lifes >= 0) {
         document.getElementById("lifes").innerText = Array(playerInfo.lifes)

@@ -6,24 +6,29 @@ body {
   align-items: center;
   justify-content: center;
   font-family: Helvetica, sans-serif;
-  /* overflow-x: hidden; */
 }
 
 h1 {
-  line-height: 1;
+  font-size: 1.5rem;
 }
 
-/* h3 {
-  font-size: 24px;
-  line-height: 1;
-} */
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
 
 nav {
   position: fixed;
-  left: 2vw;
-  top: 2vh;
+  left: 20px;
+  top: 20px;
   text-align: left;
-  font-size: 20px;
+}
+
+nav img {
+  width: 110px;
 }
 
 #start-screen {
@@ -39,54 +44,49 @@ nav {
 
 #scoreboard-overlay {
   position: absolute;
-  top: 2vh;
-  right: 2vw;
+  top: 20px;
+  right: 20px;
   text-align: left;
 }
 
 .styled-table {
-  margin: 25px 0;
-  min-width: 460px;
+  min-width: 300px;
   text-align: center;
   border-collapse: collapse;
-  /* border-spacing: 10px; */
 }
 
 .styled-table td {
   width: 100px;
   height: 60px;
-  /* padding: 10px; */
-  background-color: #f2f2f2;
 }
 
 .styled-table tr {
-  border: 10px solid #000;
+  border: 12px solid #000;
 }
 
 #gameover-overlay {
   background-color: #000000;
   color: #ffffff;
   padding: 10px 20px;
-  font-size: 40px;
   margin: 40px auto;
 }
 
 #start-button,
 #replay-button {
-  width: 500px;
-  height: 160px;
+  width: 360px;
+  height: 100px;
   background-color: #fff;
   color: #000;
-  font-size: 50px;
+  font-size: 32px;
   font-weight: 900;
   transition: background-color 1s;
-  border: 20px solid #000;
+  border: 12px solid #000;
 }
 
 #start-button:hover,
 #replay-button:hover {
   background-color: #ffffff;
-  color: #333333;
+  color: #000;
   cursor: pointer;
 }
 

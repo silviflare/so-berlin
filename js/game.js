@@ -98,6 +98,20 @@ class Game {
       height: 140,
     };
 
+    const obstacleLose03 = {
+      imageSource: loadImage("./assets/obstacles/obstacle_lose_01.png"),
+      points: -1,
+      width: 80,
+      height: 80,
+    };
+
+    const obstacleLose04 = {
+      imageSource: loadImage("./assets/obstacles/obstacle_lose_02.png"),
+      points: -1,
+      width: 120,
+      height: 140,
+    };
+
     this.obstacleImages = [
       obstacle01,
       obstacle02,
@@ -107,6 +121,8 @@ class Game {
       obstacle06,
       obstacleLose01,
       obstacleLose02,
+      obstacleLose03,
+      obstacleLose04,
     ];
 
     soundFormats("wav", "mp3");
@@ -139,20 +155,11 @@ class Game {
   gameOver() {
     this.status = "gameOver";
     game.soundSkateboard.stop();
-    // checkHighScore(this.player.score)
-    // document.getElementById("score").innerText = this.player.score;
+    document.getElementById("score").innerText = this.player.score;
     const gameOverOverlay = document.getElementById("gameover-screen");
     gameOverOverlay.classList.remove("hide");
     document.getElementById("lifes").innerText = "☠️";
   }
-
-  /*  checkHighScore(score) {
-    let highscore = getItem("highscore") || 0;
-    if (score > highscore) {
-      highscore = score;
-      localStorage.setItem("highscore", score);
-    }
-  } */
 
   updateScoreBoard() {
     document.getElementById("score").innerText = this.player.score;

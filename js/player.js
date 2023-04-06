@@ -1,7 +1,7 @@
 class Player {
   constructor() {
-    this.width = 155;
-    this.height = 125;
+    this.width = 145;
+    this.height = 115;
     this.reset();
   }
 
@@ -13,19 +13,19 @@ class Player {
     this.velocity += this.gravity;
     this.y += this.velocity;
 
-    if (this.y >= canvasHeight - 1.7 * this.height) {
-      this.y = canvasHeight - 1.7 * this.height;
+    if (this.y >= canvasHeight - 1.6 * this.height) {
+      this.y = canvasHeight - 1.6 * this.height;
     }
 
     if (this.velocity < 10) {
-      image(game.playerImageJump, this.x, this.y, 120, 140);
+      image(game.playerImageJump, this.x, this.y, 110, 130);
     } else {
       image(game.playerImage, this.x, this.y, this.width, this.height);
     }
   }
 
   jump() {
-    if (this.y > 600) {
+    if (this.y > 400) {
       this.velocity = -20;
     }
   }
