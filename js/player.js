@@ -13,15 +13,9 @@ class Player {
     this.velocity += this.gravity;
     this.y += this.velocity;
 
-    if (this.y >= canvasHeight - 2 * this.height) {
-      this.y = canvasHeight - 2 * this.height;
+    if (this.y >= canvasHeight - 1.7 * this.height) {
+      this.y = canvasHeight - 1.7 * this.height;
     }
-
-    /* if (keyCode === 32) {
-      image(game.playerImageJump, this.x, this.y, this.width, this.height);
-    } else if (this.y < canvasHeight - 2 * this.height) {
-      image(game.playerImage, this.x, this.y, this.width, this.height);
-    } */
 
     if (this.velocity < 10) {
       image(game.playerImageJump, this.x, this.y, 120, 140);

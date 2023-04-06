@@ -101,11 +101,6 @@ class Game {
       obstacleLose02,
     ];
 
-    // const obstacle01 = loadImage("./assets/obstacles/obstacle_01.webp");
-    // const obstacle02 = loadImage("./assets/obstacles/obstacle_02.webp");
-    // const obstacle03 = loadImage("./assets/obstacles/obstacle_03.webp");
-    // this.obstacleImages = [obstacle01, obstacle02, obstacle03];
-
     soundFormats("wav", "mp3");
     this.pointSound = loadSound(
       "./assets/sounds/mixkit-happy-bell-alert-601.wav"
@@ -138,6 +133,7 @@ class Game {
     game.soundSkateboard.stop();
     const gameOverOverlay = document.getElementById("gameover-screen");
     gameOverOverlay.classList.remove("hide");
+    document.getElementById("lifes").innerText = "☠️";
   }
 
   updateScoreBoard() {
@@ -158,7 +154,6 @@ class Game {
     this.background.draw();
     this.player.draw();
 
-    //Push a new random obstacle (of the obstacle object array) into the new array
     let randomObstacle = floor(random(0, this.obstacleImages.length));
 
     if (frameCount === this.nextObstacleFrame) {
@@ -174,9 +169,6 @@ class Game {
       this.obstacleUp += 2;
     }
 
-    // console.log({ speedUp: this.speedUp, obstacleUp: this.obstacleUp });
-
-    // Draw obstacles
     this.obstacles.forEach((obstacle) => {
       obstacle.draw(this.speedUp);
     });
@@ -188,7 +180,7 @@ class Game {
         (obstacle.framePoints > 0 && frameCount > obstacle.framePoints + 20) ||
         obstacle.x < -obstacle.width
       ) {
-        return false; // delete later
+        return false;
       } else {
         return true;
       }

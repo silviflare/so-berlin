@@ -5,10 +5,18 @@ class Obstacle {
     this.width = obstacleConfig.width;
     this.height = obstacleConfig.height;
     this.x = canvasWidth;
-    this.y = random(canvasHeight - 200, canvasHeight - 250);
+    this.y = canvasHeight - 200;
     this.velocity = 5;
     this.frameCrash = 0;
     this.framePoints = 0;
+    this.position();
+  }
+
+  position() {
+    if (this.points > 0) {
+      const upOrDown = round(random(0, 1));
+      this.y = upOrDown === 0 ? canvasHeight - 400 : canvasHeight - 200;
+    }
   }
 
   draw(speedUp) {
@@ -25,7 +33,6 @@ class Obstacle {
 
     if (this.framePoints > 0) {
       image(game.pointImage, this.x, this.y - 100, 50, 50) * this.points;
-      // setTimeout(cycle, 2000, nextIndex);
       return;
     }
 
@@ -50,13 +57,11 @@ class Obstacle {
         game.pointSound.play();
         playerInfo.score += this.points;
         this.framePoints = frameCount;
-        console.log("Here I won some points:" + this.framePoints);
       } else {
         game.crashSound.play();
         image(game.crashImage, this.x, this.y, 200, 200);
         playerInfo.lifes += this.points;
         this.frameCrash = frameCount;
-        console.log("Here I lost a life:" + this.frameCrash);
       }
 
       document.getElementById("score").innerText = playerInfo.score;

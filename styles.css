@@ -9,10 +9,14 @@ body {
   /* overflow-x: hidden; */
 }
 
+h1 {
+  line-height: 1;
+}
+
 nav {
   position: fixed;
-  left: 3vw;
-  top: 3vh;
+  left: 2vw;
+  top: 2vh;
   text-align: left;
   font-size: 20px;
 }
@@ -32,11 +36,28 @@ nav {
 
 #scoreboard-overlay {
   position: absolute;
-  top: 3vh;
-  right: 3vw;
-  width: 360px;
+  top: 2vh;
+  right: 2vw;
   text-align: left;
-  width: 300px;
+}
+
+.styled-table {
+  margin: 25px 0;
+  min-width: 460px;
+  text-align: center;
+  border-collapse: collapse;
+  /* border-spacing: 10px; */
+}
+
+.styled-table td {
+  width: 100px;
+  height: 60px;
+  /* padding: 10px; */
+  background-color: #f2f2f2;
+}
+
+.styled-table tr {
+  border: 10px solid #000;
 }
 
 #gameover-overlay {
