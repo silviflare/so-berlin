@@ -74,6 +74,10 @@ class Obstacle {
 
       document.getElementById("score").innerText = playerInfo.score;
 
+      // document.getElementsByClassName("score").innerHTML = playerInfo.score;
+      // let scoreAchived = playerInfo.score;
+      // document.getElementById("score").innerText = scoreAchived;
+
       if (playerInfo.lifes >= 0) {
         document.getElementById("lifes").innerText = Array(playerInfo.lifes)
           .fill("❤️")

@@ -13,6 +13,11 @@ h1 {
   line-height: 1;
 }
 
+/* h3 {
+  font-size: 24px;
+  line-height: 1;
+} */
+
 nav {
   position: fixed;
   left: 2vw;
@@ -27,8 +32,6 @@ nav {
 }
 
 #gameover-screen {
-  /* visibility: hidden; */
-  /* opacity: 0; */
   position: absolute;
   transition: opacity 1s;
   text-align: center;
@@ -65,25 +68,18 @@ nav {
   color: #ffffff;
   padding: 10px 20px;
   font-size: 40px;
-  letter-spacing: 4px;
-  margin: auto;
-  margin-top: 200px;
+  margin: 40px auto;
 }
 
 #start-button,
 #replay-button {
   width: 500px;
   height: 160px;
-  /* background-color: #e889ef; */
   background-color: #fff;
   color: #000;
-  padding: 10px 20px;
   font-size: 50px;
-  letter-spacing: 2px;
   font-weight: 900;
   transition: background-color 1s;
-  margin: 40px auto;
-  /* border: none; */
   border: 20px solid #000;
 }
 

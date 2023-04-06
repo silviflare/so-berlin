@@ -139,10 +139,20 @@ class Game {
   gameOver() {
     this.status = "gameOver";
     game.soundSkateboard.stop();
+    // checkHighScore(this.player.score)
+    // document.getElementById("score").innerText = this.player.score;
     const gameOverOverlay = document.getElementById("gameover-screen");
     gameOverOverlay.classList.remove("hide");
     document.getElementById("lifes").innerText = "☠️";
   }
+
+  /*  checkHighScore(score) {
+    let highscore = getItem("highscore") || 0;
+    if (score > highscore) {
+      highscore = score;
+      localStorage.setItem("highscore", score);
+    }
+  } */
 
   updateScoreBoard() {
     document.getElementById("score").innerText = this.player.score;
