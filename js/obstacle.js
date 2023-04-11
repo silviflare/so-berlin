@@ -31,6 +31,7 @@ class Obstacle {
       return;
     }
 
+    // Coins over the player
     if (this.framePoints > 0) {
       image(game.pointImage, this.x + this.width / 2, this.y - 100, 50, 50);
 
@@ -48,12 +49,14 @@ class Obstacle {
   }
 
   collision(playerInfo) {
+    // Find the collision coordinates
     let obstacleX = this.x + this.width / 2;
     let obstacleY = this.y + this.height / 2;
 
     let playerX = playerInfo.x + playerInfo.width / 2;
     let playerY = playerInfo.y + playerInfo.height / 2;
 
+    // Collision & not collision events
     if (
       dist(playerX, playerY, obstacleX, obstacleY) > 60 ||
       this.framePoints > 0 ||

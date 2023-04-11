@@ -156,6 +156,7 @@ class Game {
     this.status = "gameOver";
     game.soundSkateboard.stop();
 
+    // Local Highscore
     let highscore = getItem("highscore") || 0;
     console.log(highscore);
     if (this.player.score > highscore) {
@@ -177,6 +178,7 @@ class Game {
     document.getElementById("youScore").innerText = this.player.score;
 
     document.getElementById("score").innerText = this.player.score;
+
     const gameOverOverlay = document.getElementById("gameover-screen");
     gameOverOverlay.classList.remove("hide");
     document.getElementById("lifes").innerText = "☠️";
@@ -204,11 +206,13 @@ class Game {
 
     let randomObstacle = floor(random(0, this.obstacleImages.length));
 
+    // Random Obstacles
     if (frameCount === this.nextObstacleFrame) {
       this.obstacles.push(new Obstacle(this.obstacleImages[randomObstacle]));
       this.nextObstacleFrame += floor(random(50, 100) - this.obstacleUp);
     }
 
+    // Level up - Speed up obstacles
     if (frameCount % 200 === 0 && this.speedUp < 3) {
       this.speedUp += 0.2;
     }
